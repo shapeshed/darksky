@@ -6,14 +6,11 @@ import (
 	"fmt"
 	"net/http"
 	"net/url"
-	"os"
 	"path"
 	"strconv"
 )
 
 const BASEURL = "https://api.darksky.net/forecast/"
-
-var debug = os.Getenv("DEBUG")
 
 type RequestParams struct {
 	Key       string
@@ -87,7 +84,6 @@ func Get(p *RequestParams) (forecast *Forecast, err error) {
 	if res != nil {
 		defer res.Body.Close()
 	}
-
 	if res.StatusCode != 200 {
 		return forecast, fmt.Errorf("Received %v response", res.StatusCode)
 	}
