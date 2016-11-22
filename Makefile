@@ -1,4 +1,4 @@
-all: check-gofmt vet 
+all: check-gofmt vet test
 
 check-gofmt:
 	@if [ -n "$(shell gofmt -l .)" ]; then \
@@ -12,3 +12,6 @@ vet:
 
 lint:
 	@golint ./...
+
+test:
+	@go test ./...
